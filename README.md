@@ -1,4 +1,16 @@
-# gh-socials
+# gh-socials - A Github CLI extension for getting a users socials
 
-## A Github CLI extension for getting a users socials
-Requires [jq](https://stedolan.github.io/jq/)
+## Requirements
+[jq](https://stedolan.github.io/jq/)
+
+[GitHub cli (gh)](https://github.com/cli/cli)
+
+[curl](https://github.com/curl/curl)
+
+## Installation
+`gh extension install Astatham98/gh-socials`
+
+## Usage
+Just run: 
+
+`gh socials <GitHub Username>`
