@@ -1,11 +1,21 @@
 #!/bin/bash
 set -e
-TWITTER="twitter.com/"
+TWITTER="Twitter: twitter.com/"
+BLOG="Blog: "
+EMAIL="Email: "
 
-echo "Username: $1"
-
-TWITTER+=$(curl \
+OUTPUT=$(curl \
   -s "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/users/$1 | jq -r '.twitter_username')
+  https://api.github.com/users/$1 | jq -r '.twitter_username, .blog, .email')
 
-echo $TWITTER
+stringarray=($OUTPUT)
+
+FULL_TWITTER=$TWITTER${stringarray[0]}
+FULL_BLOG=$BLOG${stringarray[1]}
+FULL_EMAIL=$EMAIL${stringarray[2]}
+
+
+echo "Social details for github user $1"
+echo $FULL_TWITTER
+echo $FULL_BLOG
+echo $FULL_EMAIL
