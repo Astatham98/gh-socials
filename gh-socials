@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+TWITTER="twitter.com/"
+
+echo "Username: $1"
+
+TWITTER+=$(curl \
+  -s "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/users/$1 | jq -r '.twitter_username')
+
+echo $TWITTER
